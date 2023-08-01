@@ -28,12 +28,17 @@ setTimeout(()=>{
 }
 
 
-function createPost(post){
+//it had to wait to create the post before calling the call back
+function createPost(post,callback){
     setTimeout(()=>{
         posts.push(post)
+        callback();
         //2000ms or 2 sconds
     },2000)
 }
+
 //call the function for it to work
-getPosts();
-createPost({title:'Post three',body:'This is post three'})
+//make it a callback
+// getPosts();
+createPost({title:'Post three',body:'This is post three'},getPosts)
+
